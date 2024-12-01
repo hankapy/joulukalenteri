@@ -1,10 +1,21 @@
 // Hae kaikki luukut
-const doors = document.querySelectorAll('.door');
+const calendar = document.querySelector('.calendar');
+const doors = Array.from(calendar.children); // Muunna kaikki luukut taulukoksi
+
+// Sekoita luukut Fisher-Yates-algoritmilla
+for (let i = doors.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [doors[i], doors[j]] = [doors[j], doors[i]];
+}
+
+// Tyhjennä kalenterin sisältö ja lisää luukut satunnaisessa järjestyksessä
+calendar.innerHTML = ""; // Poista vanha järjestys
+doors.forEach(door => calendar.appendChild(door)); // Lisää satunnaistettu järjestys
 
 // Hanki tämänhetkinen päivämäärä
 const today = new Date().getDate();
 
-// Lisää klikkauslogiikka jokaiseen luukkuun
+// Lisää avaamislogiikka jokaiseen luukkuun
 doors.forEach(door => {
     const day = parseInt(door.dataset.day, 10); // Hae luukun päivämäärä
 
