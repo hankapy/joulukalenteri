@@ -23,7 +23,7 @@ shuffledDoors.forEach(day => {
 
     const back = document.createElement('div');
     back.classList.add('door-content', 'door-back');
-    back.style.backgroundImage = `url('images/image${day}.jpg')`; // Kuva-polku
+    back.style.backgroundImage = `url('image${day}.jpg')`; // Kuva-polku
     door.appendChild(back);
 
     // Estä avaamattomat luukut
