@@ -1,33 +1,14 @@
-// Hae kalenterielementti
-const calendar = document.querySelector('.calendar');
+// Hae kaikki luukut
+const doors = document.querySelectorAll('.door');
 
-// Tyhjennä mahdolliset olemassa olevat luukut (jos niitä on)
-calendar.innerHTML = "";
+// Hanki tämänhetkinen päivä
+const today = new Date().getDate();
 
-// Luo numerot 1–24 ja sekoita ne
-const doors = Array.from({ length: 24 }, (_, i) => i + 1);
-const shuffledDoors = doors.sort(() => Math.random() - 0.5);
+// Lisää avaamislogiikka
+doors.forEach(door => {
+    const day = parseInt(door.dataset.day, 10);
 
-// Luo kalenterin luukut
-shuffledDoors.forEach(day => {
-    // Luo yksi luukku
-    const door = document.createElement('div');
-    door.classList.add('door');
-    door.dataset.day = day;
-
-    // Luo luukun etu- ja takapuoli
-    const front = document.createElement('div');
-    front.classList.add('door-content', 'door-front');
-    front.innerText = day; // Numerot näkyvät etupuolella
-    door.appendChild(front);
-
-    const back = document.createElement('div');
-    back.classList.add('door-content', 'door-back');
-    back.style.backgroundImage = `url('./image${day}.jpg')`; // Päivitetty: Kuva samassa kansiossa
-    door.appendChild(back);
-
-    // Estä avaamattomat luukut
-    const today = new Date().getDate();
+    // Varmista, että luukku ei aukea liian aikaisin
     if (day > today) {
         door.classList.add('disabled');
         door.title = "Ei vielä avattavissa!";
@@ -36,7 +17,4 @@ shuffledDoors.forEach(day => {
             door.classList.add('open');
         });
     }
-
-    // Lisää luukku kalenteriin
-    calendar.appendChild(door);
 });
