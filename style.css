@@ -93,32 +93,6 @@ h1 {
         gap: 5px; /* Pienempi väli luukkujen välillä */
     }
 
-body {
-    background: url('snowy-background.jpg') no-repeat center center fixed;
-    background-size: cover;
-}
-
-@keyframes snow {
-    0% {
-        transform: translateY(0);
-    }
-    100% {
-        transform: translateY(100vh);
-    }
-}
-
-.snowflake {
-    position: fixed;
-    top: -10%;
-    left: calc(50% - 10px);
-    width: 20px;
-    height: 20px;
-    background: white;
-    opacity: 0.8;
-    border-radius: 50%;
-    animation: snow 10s linear infinite;
-}
-
 
     .door-front {
         font-size: 18px; /* Pienennetään fonttia pienillä näytöillä */
