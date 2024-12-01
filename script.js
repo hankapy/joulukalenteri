@@ -1,22 +1,22 @@
 // Hae kaikki luukut
 const doors = document.querySelectorAll('.door');
 
-// Hanki tämänhetkinen päivä
+// Hanki tämänhetkinen päivämäärä
 const today = new Date().getDate();
 
-// Lisää avaamislogiikka jokaiseen luukkuun
+// Lisää klikkauslogiikka jokaiseen luukkuun
 doors.forEach(door => {
-    const day = parseInt(door.dataset.day, 10); // Hae luukun päivästä
+    const day = parseInt(door.dataset.day, 10); // Hae luukun päivämäärä
 
-    // Estetään luukun avaaminen, jos päivä ei ole vielä saavutettu
+    // Estetään avaamattomien luukkujen klikkaaminen
     if (day > today) {
         door.classList.add('disabled');
         door.title = "Ei vielä avattavissa!";
     } else {
-        // Lisää klikkauskuuntelija avattavaksi luukulle
+        // Lisää klikkaustapahtuma avattavalle luukulle
         door.addEventListener('click', () => {
-            if (!door.classList.contains('open')) {
-                door.classList.add('open'); // Lisää "open"-luokka, joka avaa luukun
+            if (!door.classList.contains('open')) { // Tarkista, ettei luukku ole jo avattu
+                door.classList.add('open'); // Lisää "open"-luokka
             }
         });
     }
