@@ -1,8 +1,8 @@
-/* Yleisilme */
+/* Yleiset asetukset */
 body {
     font-family: Arial, sans-serif;
     text-align: center;
-    background-color: red; /* Taustaväri */
+    background-color: red;
     margin: 0;
     padding: 0;
 }
@@ -21,164 +21,54 @@ h1 {
     max-width: 400px;
 }
 
-/* Luukkujen tyyli */
+/* Luukun yleinen tyyli */
 .door {
     position: relative;
     width: 100%;
     padding-top: 100%;
-    background-color: black; /* Luukun väri */
-    color: white; /* Numeron väri */
-    font-size: 24px;
-    font-weight: bold;
-    border: 2px solid #fff; /* Valkoinen reunaviiva */
-    cursor: pointer;
     perspective: 1000px;
-    text-align: center;
 }
 
-.door-content {
+.door-front, .door-back {
     position: absolute;
     width: 100%;
     height: 100%;
-    top: 0;
-    left: 0;
     backface-visibility: hidden;
-    transform-origin: right center;
+    transform-origin: center right;
     transition: transform 0.6s;
 }
 
+/* Luukun etupuoli */
 .door-front {
-    background-color: black; /* Luukun etupuolen väri */
-    color: white; /* Numeron väri */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.door-back {
-    background-color: white;
-    background-size: cover;
-    transform: rotateY(180deg);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Avaamisen logiikka */
-.door.open .door-front {
-    transform: rotateY(-180deg);
-}
-
-.door.open .door-back {
-    transform: rotateY(0deg);
-}
-
-/* Estettyjen luukkujen tyyli */
-.door.disabled {
-    cursor: not-allowed;
-    opacity: 0.7;
-}
-
-/* Jouluvalojen säiliö */
-.lights {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin: 20px 0;
-}
-
-/* Valon perusmuoto */
-.light {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-    animation: blink 1.5s infinite ease-in-out;
-}
-
-/* Valojen värit */
-.light.red {
-    background-color: red;
-}
-
-.light.green {
-    background-color: green;
-}
-
-.light.blue {
-    background-color: blue;
-}
-
-.light.yellow {
-    background-color: yellow;
-}
-
-/* Animaatio valojen vilkkumiselle */
-@keyframes blink {
-    0%, 100% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0.5;
-    }
-}
-
-/* Responsiivisuus */
-@media (max-width: 600px) {
-    .calendar {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 5px;
-    }
-
-    .door {
-        font-size: 18px;
-    }
-
-    .lights {
-        gap: 5px;
-    }
-
-    .light {
-        width: 15px;
-        height: 15px;
-    }
-}
-/* Kalenterin luukkujen tyyli */
-.door {
-    position: relative;
-    width: 100%;
-    padding-top: 100%;
-    overflow: hidden; /* Estää kuvan venymisen ulkopuolelle */
     background-color: black;
     color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 24px;
     font-weight: bold;
-    border: 2px solid #fff;
     cursor: pointer;
-    perspective: 1000px;
-    text-align: center;
+    border: 2px solid white;
 }
 
-/* Luukun taustakuvan asetus */
+/* Luukun taustapuoli */
 .door-back {
-    background-size: cover; /* Kuva sopii täydellisesti luukun taustalle */
-    background-position: center; /* Keskitetään kuva luukun taustalle */
-    background-repeat: no-repeat; /* Estetään toistuminen */
-}
-
-/* Avauslogiikka: Estetään ylimääräisen kuvan näkyminen */
-.door-content {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    backface-visibility: hidden;
-    transform-origin: right center;
-    transition: transform 0.6s;
+    background-color: white;
+    transform: rotateY(180deg);
     overflow: hidden; /* Piilotetaan ylimääräinen sisältö */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+/* Luukun sisältökuva */
+.door-back img {
+    width: 100%; /* Skaalataan kuva luukun kokoon */
+    height: 100%;
+    object-fit: cover; /* Pitää kuvan suhteet kunnossa */
+}
+
+/* Luukun avautuminen */
 .door.open .door-front {
     transform: rotateY(-180deg);
 }
@@ -186,4 +76,3 @@ h1 {
 .door.open .door-back {
     transform: rotateY(0deg);
 }
-
