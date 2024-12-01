@@ -143,3 +143,47 @@ h1 {
         height: 15px;
     }
 }
+/* Kalenterin luukkujen tyyli */
+.door {
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+    overflow: hidden; /* Estää kuvan venymisen ulkopuolelle */
+    background-color: black;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    border: 2px solid #fff;
+    cursor: pointer;
+    perspective: 1000px;
+    text-align: center;
+}
+
+/* Luukun taustakuvan asetus */
+.door-back {
+    background-size: cover; /* Kuva sopii täydellisesti luukun taustalle */
+    background-position: center; /* Keskitetään kuva luukun taustalle */
+    background-repeat: no-repeat; /* Estetään toistuminen */
+}
+
+/* Avauslogiikka: Estetään ylimääräisen kuvan näkyminen */
+.door-content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    backface-visibility: hidden;
+    transform-origin: right center;
+    transition: transform 0.6s;
+    overflow: hidden; /* Piilotetaan ylimääräinen sisältö */
+}
+
+.door.open .door-front {
+    transform: rotateY(-180deg);
+}
+
+.door.open .door-back {
+    transform: rotateY(0deg);
+}
+
