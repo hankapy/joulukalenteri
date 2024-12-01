@@ -7,12 +7,29 @@ body {
     padding: 0;
 }
 
-h1 {
-    margin: 20px 20px 20px;
-    color: gold;
-    font-size: 28px;
+/* Otsikon päätyyli */
+.header {
+    text-align: center;
+    margin: 20px;
+    color: white;
 }
 
+/* Ensimmäinen rivi */
+.header h1 {
+    font-size: 36px; /* Suurempi fonttikoko */
+    font-weight: bold;
+    margin: 10px 0;
+    color: #FFD700; /* Kullanvärinen teksti */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Hieman varjoa tekstille */
+}
+
+/* Toinen rivi */
+.header .subtitle {
+    font-size: 18px; /* Pienempi fonttikoko */
+    font-style: italic; /* Kursivoitu teksti */
+    color: #FFFACD; /* Kermanvalkoinen väri */
+    margin-top: -10px; /* Vähennä väliä ensimmäiseen riviin */
+}
 /* Kalenterin asettelu */
 .calendar {
     display: grid;
